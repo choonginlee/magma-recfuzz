@@ -35,7 +35,7 @@ while read file; do
     exit_code=$(awk '{print $2}' <<< "$out")
     bug=$(awk '{print $4}' <<< "$out")
 
-    poc_name="${FUZZER}_${TARGET}_${PROGRAM}"
+    poc_name="${FUZZER}_${TARGET}_${PROGRAM}_${ARCID}"
     if [ ! -z $bug ]; then
         poc_name="${poc_name}_$bug"
     else
