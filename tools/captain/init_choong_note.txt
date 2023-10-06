@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+# set core option
+sudo bash -c "echo core > /proc/sys/kernel/core_pattern"
+
+# set usergroup
+sudo usermod -aG docker $USER
+newgrp docker
+
+# clear docker images
+docker rmi $(docker images | grep $(KWRD))
+docker image prune
+
+# clear docker containers
+docker container prune
