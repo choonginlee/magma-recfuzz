@@ -54,14 +54,14 @@ fi
 if [ -t 1 ]; then
     docker run -it $flag_volume \
         --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
-        --env=PROGRAM="$PROGRAM" --env=ARGS="$ARGS" \
+        --env=PROGRAM="$PROGRAM" --env=ARGS="$ARGS" --env=ARCID="$ARCID"\
         --env=FUZZARGS="$FUZZARGS" --env=POLL="$POLL" --env=TIMEOUT="$TIMEOUT" \
         $flag_aff $flag_ep "$IMG_NAME"
 else
     container_id=$(
     docker run -dt $flag_volume \
         --cap-add=SYS_PTRACE --security-opt seccomp=unconfined \
-        --env=PROGRAM="$PROGRAM" --env=ARGS="$ARGS" \
+        --env=PROGRAM="$PROGRAM" --env=ARGS="$ARGS" --env=ARCID="$ARCID"\
         --env=FUZZARGS="$FUZZARGS" --env=POLL="$POLL" --env=TIMEOUT="$TIMEOUT" \
         --network=none \
         $flag_aff $flag_ep "$IMG_NAME"
