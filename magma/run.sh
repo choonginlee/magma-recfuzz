@@ -66,7 +66,7 @@ while true; do
     sleep $POLL
 done &
 
-echo "Campaign launched at $(date '+%F %R')"
+echo "Campaign launched at $(date '+%F %R') in ARCID $ARCID"
 
 timeout $TIMEOUT "$FUZZER/run.sh" | \
     multilog n2 s$LOGSIZE "$SHARED/log"
@@ -75,6 +75,6 @@ if [ -f "$SHARED/log/current" ]; then
     cat "$SHARED/log/current"
 fi
 
-echo "Campaign terminated at $(date '+%F %R')"
+echo "Campaign terminated at $(date '+%F %R') in ARCID $ARCID"
 
 kill $(jobs -p)
