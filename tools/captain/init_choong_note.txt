@@ -1,5 +1,11 @@
 #!/bin/bash -e
 
+# pull git to f/u latest version
+sudo git pull
+
+# modify github token to build
+vim ~/magma-recfuzz/fuzzers/FUZZER_NAME/fetch.sh
+
 # set core option
 sudo bash -c "echo core > /proc/sys/kernel/core_pattern"
 
