@@ -33,5 +33,5 @@ ulimit -c unlimited
 
 cp $FUZZER/repo/bt.gdb ./
 cp $FUZZER/repo/bt-run.gdb ./
-echo $FUZZER/repo/recfuzz -q -i $FUZZER/repo/seed_magma/exp3_aflpp_speed_test/$PROGRAM $FUZZARGS -o "$SHARED/findings/output" -f "$OUT/$PROGRAM $ARGS" -s random-only
-$FUZZER/repo/recfuzz -q -i $FUZZER/repo/seed_magma/exp3_aflpp_speed_test/$PROGRAM $FUZZARGS -o "$SHARED/findings/output" -f "$OUT/$PROGRAM $ARGS" -s random-only
+echo $FUZZER/repo/recfuzz -q -i $FUZZER/repo/seed_magma/exp1_afl_count_test/$PROGRAM $FUZZARGS -o "$SHARED/findings/output" -f "$OUT/$PROGRAM $ARGS" -s random-only
+$FUZZER/repo/recfuzz -q -i $FUZZER/repo/seed_magma/exp1_afl_count_test/$PROGRAM $FUZZARGS -o "$SHARED/findings/output" -f "$OUT/$PROGRAM $ARGS" -s random-only
