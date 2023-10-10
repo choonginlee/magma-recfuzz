@@ -41,7 +41,7 @@ USER root:root
 RUN mkdir -p ${MAGMA} && chown magma:magma ${MAGMA}
 COPY --chown=magma:magma ${magma_root}/${magma_path} ${MAGMA}/
 RUN ${MAGMA}/preinstall.sh
-USER magma:magma
+#USER magma:magma
 RUN ${MAGMA}/prebuild.sh
 
 ARG fuzzer_name
@@ -51,7 +51,7 @@ USER root:root
 RUN mkdir -p ${FUZZER} && chown magma:magma ${FUZZER}
 COPY --chown=magma:magma ${magma_root}/${fuzzer_path} ${FUZZER}/
 RUN ${FUZZER}/preinstall.sh
-USER magma:magma
+#USER magma:magma
 RUN ${FUZZER}/fetch.sh
 RUN ${FUZZER}/build.sh
 
@@ -62,7 +62,7 @@ USER root:root
 RUN mkdir -p ${TARGET} && chown magma:magma ${TARGET}
 COPY --chown=magma:magma ${magma_root}/${target_path} ${TARGET}/
 RUN ${TARGET}/preinstall.sh
-USER magma:magma
+#USER magma:magma
 RUN ${TARGET}/fetch.sh
 RUN ${MAGMA}/apply_patches.sh
 
