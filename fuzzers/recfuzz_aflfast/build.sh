@@ -21,7 +21,6 @@ CC=clang make -j $(nproc) -C llvm_mode > /dev/null 2>&1
 # prerequisite
 apt-get install -y libjson-c-dev libssl-dev libxml2-dev > /dev/null 2>&1
 cd "$FUZZER/repo"
-tar -xf initial_result_magma.tar
 make -j $(nproc) 2>&1
 
 # compile afl_driver.cpp
