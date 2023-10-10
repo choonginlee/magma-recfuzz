@@ -89,7 +89,7 @@ recfuzz_aflplusplus_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer tiffcp)
 recfuzz_aflplusplus_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer xmllint)
 recfuzz_aflplusplus_php_PROGRAMS=(exif)
 recfuzz_aflplusplus_poppler_PROGRAMS=(pdf_fuzzer pdfimages pdftoppm)
-recfuzz_aflplusplus_openssl_PROGRAMS=(asn1 client server)
+recfuzz_aflplusplus_openssl_PROGRAMS=(asn1)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`
