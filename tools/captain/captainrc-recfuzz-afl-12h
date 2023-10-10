@@ -7,10 +7,10 @@
 ###
 
 # WORKDIR: path to directory where shared volumes will be created
-WORKDIR=./workdir
+WORKDIR=./workdir_recfuzz_afl_12h_isan
 
 # REPEAT: number of campaigns to run per program (per fuzzer)
-REPEAT=3
+REPEAT=5
 
 # [WORKER_MODE]: defines the type of CPU resources to allocate (default: 1)
 # - 1: logical cores (possibly SMT-enabled)
@@ -30,7 +30,7 @@ REPEAT=3
 # [TIMEOUT]: time to run each campaign. This variable supports one-letter
 # suffixes to indicate duration (s: seconds, m: minutes, h: hours, d: days)
 # (default: 1m)
-TIMEOUT=24h
+TIMEOUT=12h
 
 # [POLL]: time (in seconds) between polls (default: 5)
 POLL=5
@@ -40,7 +40,7 @@ POLL=5
 # CACHE_ON_DISK=1
 
 # [NO_ARCHIVE]: if set, campaign workdirs will not be tarballed (default: unset)
-# NO_ARCHIVE=1
+NO_ARCHIVE=1
 
 # [TMPFS_SIZE]: the size of the tmpfs mounted volume. This only applies when
 # CACHE_ON_DISK is not set (default: 50g)
@@ -56,14 +56,14 @@ POLL=5
 # CANARY_MODE=3
 
 # [ISAN]: if set, build the benchmark with ISAN/fatal canaries (default: unset)
-# ISAN=1
+ISAN=1
 
 # [HARDEN]: if set, build the benchmark with hardened canaries (default: unset)
 # HARDEN=1
 
 # [POC_EXTRACT]: if set, run the extract.sh script after the campaign is done
 # (default: unset)
-# POC_EXTRACT=1
+POC_EXTRACT=1
 
 
 ###
@@ -71,17 +71,25 @@ POLL=5
 ###
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
-FUZZERS=(afl aflfast moptafl aflplusplus fairfuzz honggfuzz)
+FUZZERS=(recfuzz_afl)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
 # afl_TARGETS=(libpng libtiff libxml2)
+recfuzz_afl_TARGETS=(libpng libsndfile libtiff libxml2 php poppler openssl)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the
 # `target`
 # afl_libtiff_PROGRAMS=(tiffcp)
+recfuzz_afl_libpng_PROGRAMS=(libpng_read_fuzzer)
+recfuzz_afl_libsndfile_PROGRAMS=(sndfile_fuzzer)
+recfuzz_afl_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer tiffcp)
+recfuzz_afl_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer xmllint)
+recfuzz_afl_php_PROGRAMS=(exif)
+recfuzz_afl_poppler_PROGRAMS=(pdf_fuzzer pdfimages pdftoppm)
+recfuzz_afl_openssl_PROGRAMS=(asn1 client server)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`
